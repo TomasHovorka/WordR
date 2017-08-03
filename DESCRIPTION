@@ -1,11 +1,15 @@
 Package: WordR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Rendering Word Documents with R Inline Code
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Tomas Hovorka
+Maintainer: Tomas Hovorka <tomashovorka@seznam.cz>
+Description: Serves for rendering MS Word documents with R inline code and tables.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Imports:
+  dplyr,
+  ReporteRs,
+  officer
+RoxygenNote: 6.0.1
