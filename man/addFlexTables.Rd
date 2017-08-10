@@ -2,7 +2,7 @@
 % Please edit documentation in R/addFlexTables.R
 \name{addFlexTables}
 \alias{addFlexTables}
-\title{Read Word document with R code blocks, evaluate them and writes the result into another Word document.}
+\title{Read Word document with bookmarks and create other Word documnet with rendered tables in place.}
 \usage{
 addFlexTables(docxIn, docxOut, FlexTables = list(), debug = F, ...)
 }
@@ -13,21 +13,21 @@ addFlexTables(docxIn, docxOut, FlexTables = list(), debug = F, ...)
 
 \item{FlexTables}{Named list of FlexTables; Tables to be inserted into the Word file}
 
-\item{debug}{Boolean of length one; If True browser() is called at the beginning of the function}
+\item{debug}{Boolean of length one; If \code{True} then \code{\link[base]{browser}()} is called at the beginning of the function}
 
-\item{...}{Parameters to be sent to other methods (mainly ReporteRs::addFlexTable)}
+\item{...}{Parameters to be sent to other methods (mainly \code{\link[ReporteRs]{addFlexTable}})}
 }
 \value{
 Path to the rendered Word file if the operation was successfull.
 }
 \description{
-Read Word document with R code blocks, evaluate them and writes the result into another Word document.
+This function is basically a loop wrapper around \code{\link[ReporteRs]{addFlexTable}} function.
 }
 \examples{
 \donttest{
 ft_mtcars <- vanilla.table(mtcars)
 ft_iris <- vanilla.table(iris)
-FT<-list(ft_mtcars=ft_mtcars,ft_iris=ft_iris)
+FT <- list(ft_mtcars=ft_mtcars,ft_iris=ft_iris)
 addFlexTables(
   paste(find.package('WordR'),'examples/templates/templateFT.docx',sep = '/'),
   paste(find.package('WordR'),'examples/results/resultFT.docx',sep = '/'),

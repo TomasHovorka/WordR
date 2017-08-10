@@ -11,9 +11,10 @@ renderInlineCode(docxIn, docxOut, defaultStyle = NA, debug = F)
 
 \item{docxOut}{String of length one; path for output Word file.}
 
-\item{defaultStyle}{String of length one or NA; Default style for inserted text}
+\item{defaultStyle}{String of length one or NA; Default style for inserted text. It must be one of the styles in the document.
+List of the styles can be obtained by running \code{\link[officer]{styles_info}(read_docx(docxIn)) \%>\% filter(style_type==character) \%>\% select(style_name)}}
 
-\item{debug}{Boolean of length one; If True browser() is called at the beginning of the function}
+\item{debug}{Boolean of length one; If \code{True} then \code{\link[base]{browser}()} is called at the beginning of the function}
 }
 \value{
 Path to the rendered Word file if the operation was successfull.

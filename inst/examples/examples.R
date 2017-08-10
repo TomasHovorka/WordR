@@ -1,14 +1,14 @@
-Sys.setenv(JAVA_HOME='c:\\Users\\tomas_hovorka\\Documents\\TomasH\\SW\\Java\\jdk1.8.0_121\\jre')
-
-#rendering inline code example
 library(officer)
 library(dplyr)
-styles_info(read_docx(paste(find.package("WordR"),'examples/templates/template1.docx',sep = '/'))) %>% filter(style_type=="character")
 
+#listing available styles
+styles_info(read_docx(paste(find.package("WordR"),'examples/templates/template1.docx',sep = '/'))) %>%
+  filter(style_type=="character") %>% select(style_name)
+
+#rendering inline code example
 renderInlineCode(
      paste(find.package("WordR"),'examples/templates/template1.docx',sep = '/'),
      paste(find.package("WordR"),'examples/results/result1.docx',sep = '/'),debug=F)
-
 
 #adding Flex Tables example
 library(ReporteRs)
