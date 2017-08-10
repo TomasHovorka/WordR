@@ -4,17 +4,19 @@
 \alias{renderInlineCode}
 \title{Read Word document with R code blocks, evaluate them and writes the result into another Word document.}
 \usage{
-renderInlineCode(docxIn, docxOut, debug = F)
+renderInlineCode(docxIn, docxOut, defaultStyle = NA, debug = F)
 }
 \arguments{
 \item{docxIn}{String of length one; path to Word file with R code blocks.}
 
 \item{docxOut}{String of length one; path for output Word file.}
 
+\item{defaultStyle}{String of length one or NA; Default style for inserted text}
+
 \item{debug}{Boolean of length one; If True browser() is called at the beginning of the function}
 }
 \value{
-True if the operation was successfull.
+Path to the rendered Word file if the operation was successfull.
 }
 \description{
 Read Word document with R code blocks, evaluate them and writes the result into another Word document.
@@ -22,7 +24,7 @@ Read Word document with R code blocks, evaluate them and writes the result into 
 \examples{
 \donttest{
 renderInlineCode(
-  paste(find.package("WordR"),'inst/templates/template1.docx',sep = '/'),
-  paste(find.package("WordR"),'inst/results/result1.docx',sep = '/'))
+  paste(find.package('WordR'),'examples/templates/template1.docx',sep = '/'),
+  paste(find.package('WordR'),'examples/results/result1.docx',sep = '/'))
   }
 }
