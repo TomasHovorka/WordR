@@ -9,15 +9,15 @@
 #' @param ... Parameters to be sent to other methods (mainly \code{\link[ReporteRs]{addFlexTable}})
 #' @return  Path to the rendered Word file if the operation was successfull.
 #' @examples
-#' \donttest{
+#' library(ReporteRs)
 #' ft_mtcars <- vanilla.table(mtcars)
 #' ft_iris <- vanilla.table(iris)
 #' FT <- list(ft_mtcars=ft_mtcars,ft_iris=ft_iris)
 #' addFlexTables(
-#'   paste(find.package('WordR'),'examples/templates/templateFT.docx',sep = '/'),
-#'   paste(find.package('WordR'),'examples/results/resultFT.docx',sep = '/'),
+#'   paste(examplePath(),'templates/templateFT.docx',sep = ''),
+#'   paste(examplePath(),'results/resultFT.docx',sep = ''),
 #'   FT)
-#'   }
+#'
 addFlexTables <- function(docxIn, docxOut, FlexTables = list(), debug = F, ...) {
     if (debug) {
         browser()
@@ -25,14 +25,13 @@ addFlexTables <- function(docxIn, docxOut, FlexTables = list(), debug = F, ...) 
 
     doc <- ReporteRs::docx(template = docxIn)
 
-    bks <- gsub("^t_", "",grep("^t_", ReporteRs::list_bookmarks(doc), value = T))
+    bks <- gsub("^t_", "", grep("^t_", ReporteRs::list_bookmarks(doc), value = T))
     for (bk in bks) {
         # bk<-bks[1]
         if (!bk %in% names(FlexTables)) {
             stop(paste("Table rendering: Table", bk, "not in the FlexTables list"))
         }
-        doc <- ReporteRs::addFlexTable(doc, FlexTables[[bk]], bookmark = gsub("FT$", "", paste0("t_", bk)), par.properties = ReporteRs::parProperties(text.align = "center"),
-            ...)
+        doc <- ReporteRs::addFlexTable(doc, FlexTables[[bk]], bookmark = paste0("t_", bk), par.properties = ReporteRs::parProperties(text.align = "center"), ...)
     }
 
 

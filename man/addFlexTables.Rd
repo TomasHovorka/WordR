@@ -24,13 +24,13 @@ Path to the rendered Word file if the operation was successfull.
 This function is basically a loop wrapper around \code{\link[ReporteRs]{addFlexTable}} function.
 }
 \examples{
-\donttest{
+library(ReporteRs)
 ft_mtcars <- vanilla.table(mtcars)
 ft_iris <- vanilla.table(iris)
 FT <- list(ft_mtcars=ft_mtcars,ft_iris=ft_iris)
 addFlexTables(
-  paste(find.package('WordR'),'examples/templates/templateFT.docx',sep = '/'),
-  paste(find.package('WordR'),'examples/results/resultFT.docx',sep = '/'),
+  paste(examplePath(),'templates/templateFT.docx',sep = ''),
+  paste(examplePath(),'results/resultFT.docx',sep = ''),
   FT)
-  }
+
 }

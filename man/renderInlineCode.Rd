@@ -23,9 +23,9 @@ Path to the rendered Word file if the operation was successfull.
 Read Word document with R code blocks, evaluate them and writes the result into another Word document.
 }
 \examples{
-\donttest{
+library(ReporteRs)
 renderInlineCode(
-  paste(find.package('WordR'),'examples/templates/template1.docx',sep = '/'),
-  paste(find.package('WordR'),'examples/results/result1.docx',sep = '/'))
-  }
+  paste(examplePath(),'templates/template1.docx',sep = ''),
+  paste(examplePath(),'results/result1.docx',sep = ''))
+
 }

@@ -7,11 +7,11 @@
 #' @param debug Boolean of length one; If \code{True} then \code{\link[base]{browser}()} is called at the beginning of the function
 #' @return Path to the rendered Word file if the operation was successfull.
 #' @examples
-#' \donttest{
+#' library(ReporteRs)
 #' renderInlineCode(
-#'   paste(find.package('WordR'),'examples/templates/template1.docx',sep = '/'),
-#'   paste(find.package('WordR'),'examples/results/result1.docx',sep = '/'))
-#'   }
+#'   paste(examplePath(),'templates/template1.docx',sep = ''),
+#'   paste(examplePath(),'results/result1.docx',sep = ''))
+#'
 renderInlineCode <- function(docxIn, docxOut, defaultStyle = NA, debug = F) {
     if (debug) {
         browser()
@@ -57,7 +57,7 @@ renderInlineCode <- function(docxIn, docxOut, defaultStyle = NA, debug = F) {
             stop(paste("R Inline code chunk ID:", ids, "found in multiple places. Pls check!"))
         }
         docA <- officer::cursor_reach(docA, keyword = ids) %>% officer::body_remove() %>% officer::cursor_backward() %>% officer::slip_in_text(values[i], pos = "before",
-            style = switch(is.na(expressions$style[i]), NULL, expressions$style[i]))
+            style = switch(ifelse(is.na(expressions$style[i]), "a", "b"), a = NULL, b = expressions$style[i]))
     }
 
     print(docA, target = docxOut)

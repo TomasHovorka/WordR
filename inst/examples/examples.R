@@ -5,17 +5,52 @@ library(dplyr)
 styles_info(read_docx(paste(find.package("WordR"),'examples/templates/template1.docx',sep = '/'))) %>%
   filter(style_type=="character") %>% select(style_name)
 
+##############################
 #rendering inline code example
 renderInlineCode(
-     paste(find.package("WordR"),'examples/templates/template1.docx',sep = '/'),
-     paste(find.package("WordR"),'examples/results/result1.docx',sep = '/'),debug=F)
+  paste(examplePath(),'templates/template1.docx',sep = ''),
+  paste(examplePath(),'results/result1.docx',sep = ''),debug=F)
 
+##############################
 #adding Flex Tables example
 library(ReporteRs)
 ft_mtcars <- vanilla.table(mtcars)
 ft_iris <- vanilla.table(iris)
 FT<-list(ft_mtcars=ft_mtcars,ft_iris=ft_iris)
 addFlexTables(
- paste(find.package('WordR'),'examples/templates/templateFT.docx',sep = '/'),
- paste(find.package('WordR'),'examples/results/resultFT.docx',sep = '/'),
+  paste(examplePath(),'templates/templateFT.docx',sep = ''),
+  paste(examplePath(),'results/resultFT.docx',sep = ''),
  FT)
+
+##############################
+#adding Plots example
+
+Plots<-list(plot1=function()plot(hp~wt,data=mtcars,col=cyl),plot2=function()print(ggplot(mtcars,aes(x=wt,y=hp,col=as.factor(cyl)))+geom_point()))
+addPlots(
+  paste(examplePath(),'templates/templatePlots.docx',sep = ''),
+  paste(examplePath(),'results/resultPlots.docx',sep = ''),
+  Plots,debug=F,height=4)
+
+##############################
+#combining all together
+library(ReporteRs)
+library(ggplot2)
+#prepare outputs
+ft_mtcars <- vanilla.table(mtcars)
+FT<-list(mtcars=ft_mtcars)
+Plots<-list(mtcars1=function()print(ggplot(mtcars,aes(x=wt,y=hp,col=as.factor(cyl)))+geom_point()))
+
+#render docx
+renderInlineCode(
+  paste(examplePath(),'templates/templateAll.docx',sep = ''),
+  paste(examplePath(),'results/templateAll.docx',sep = ''),debug=F)
+
+addFlexTables(
+  paste(examplePath(),'results/templateAll.docx',sep = ''),
+  paste(examplePath(),'results/templateAll.docx',sep = ''),
+  FT)
+
+addPlots(
+  paste(examplePath(),'results/templateAll.docx',sep = ''),
+  paste(examplePath(),'results/templateAll.docx',sep = ''),
+  Plots,debug=F,height=4)

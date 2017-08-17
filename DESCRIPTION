@@ -1,7 +1,7 @@
 Package: WordR
 Type: Package
 Title: Rendering Word Documents with R Inline Code
-Version: 0.1.0
+Version: 0.2.0
 Author: Tomas Hovorka
 Maintainer: Tomas Hovorka <tomashovorka@seznam.cz>
 Description: Serves for rendering MS Word documents with R inline code and tables.
@@ -14,5 +14,7 @@ Imports:
   officer
 RoxygenNote: 6.0.1
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2,
+    testthat
 VignetteBuilder: knitr
