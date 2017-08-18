@@ -26,13 +26,11 @@ addPlots <- function(docxIn, docxOut, Plots = list(), debug = F, ...) {
 
     bks <- gsub("^p_", "", grep("^p_", ReporteRs::list_bookmarks(doc), value = T))
     for (bk in bks) {
-        # bk<-bks[1]
         if (!bk %in% names(Plots)) {
             stop(paste("Plot rendering: Plot", bk, "not in the Plots list"))
         }
         doc <- ReporteRs::addPlot(doc, Plots[[bk]], bookmark = paste0("p_", bk), par.properties = ReporteRs::parProperties(text.align = "center"), ...)
     }
-
 
     ReporteRs::writeDoc(doc, docxOut)
     return(docxOut)

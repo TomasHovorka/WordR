@@ -27,13 +27,11 @@ addFlexTables <- function(docxIn, docxOut, FlexTables = list(), debug = F, ...) 
 
     bks <- gsub("^t_", "", grep("^t_", ReporteRs::list_bookmarks(doc), value = T))
     for (bk in bks) {
-        # bk<-bks[1]
         if (!bk %in% names(FlexTables)) {
             stop(paste("Table rendering: Table", bk, "not in the FlexTables list"))
         }
         doc <- ReporteRs::addFlexTable(doc, FlexTables[[bk]], bookmark = paste0("t_", bk), par.properties = ReporteRs::parProperties(text.align = "center"), ...)
     }
-
 
     ReporteRs::writeDoc(doc, docxOut)
     return(docxOut)

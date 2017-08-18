@@ -18,18 +18,18 @@ renderInlineCode <- function(docxIn, docxOut, defaultStyle = NA, debug = F) {
     }
     doc <- ReporteRs::docx(template = docxIn)
 
-    aaa <- ReporteRs::text_extract(doc)
+    extractedText <- ReporteRs::text_extract(doc)
 
-    aaa2 <- paste(aaa, collapse = "", sep = "")
+    extractedTextCollapsed <- paste(extractedText, collapse = "", sep = "")
 
-    starts <- gregexpr("#r[[:digit:]]* ", aaa2, fixed = F)[[1]]
-    ends <- gregexpr("r#", aaa2, fixed = T)[[1]]
+    starts <- gregexpr("#r[[:digit:]]* ", extractedTextCollapsed, fixed = F)[[1]]
+    ends <- gregexpr("r#", extractedTextCollapsed, fixed = T)[[1]]
 
     expressionsPars <- matrix(c(starts, ends), ncol = 2) %>% apply(1, function(x) {
         if (x[1] >= x[2]) {
             stop("Wrong sequence of inline R code separator (ending found before beginning)!")
         }
-        substr(aaa2, 2 + x[1], x[2] - 1)
+        substr(extractedTextCollapsed, 2 + x[1], x[2] - 1)
     })
 
     rexp <- "^(\\w+)\\s?(.*)$"
@@ -49,7 +49,7 @@ renderInlineCode <- function(docxIn, docxOut, defaultStyle = NA, debug = F) {
 
     for (i in seq_len(nrow(expressions))) {
         ids <- paste0("#r", expressions$ID[i])
-        nfound <- grep(paste0("^", ids, " "), aaa) %>% length
+        nfound <- grep(paste0("^", ids, " "), extractedText) %>% length
         if (nfound == 0) {
             stop(paste("R Inline code chunk ID:", ids, "not found. Pls reidentificate!(retype the \"#rXXXXX[space]\")"))
         }

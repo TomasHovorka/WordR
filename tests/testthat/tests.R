@@ -25,8 +25,3 @@ test_that("addPlots", {
     Plots,debug=F,height=4)},
   paste(examplePath(),'results/resultPlots.docx',sep = ''))
 })
-
-# test_that("bla", {
-#   expect_equal(stop(dir(find.package("WordR"))),
-#                1)
-# })
