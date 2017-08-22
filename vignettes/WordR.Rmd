@@ -45,11 +45,15 @@ First we need to create a template (.docx) file. Such file may contain any forma
 This functionality enables including simple R expression(s) (almost) anywhere in the Word document, which is evaluated during file rendering. The result of the expression need to be a string of length one (or something coercible to character(1)). Because of limitation in `officer` package, line breaks does not works. Because of used workflow, functions etc. the R expression need to be a separate paragraph. However, MS Word offers a way how to do an inline paragraph.
 Steps for creating an inline expression (in a new document):
 
-- Open MS Word, create a new file, write some normal text in it
+- Open MS Word, create a new file or open an existing one
 - locate the cursor on the place where you want to have the R expression
 - insert style separator by pressing `Ctrl+Alt+Enter` (it is preferable to have formatting symbols visible by clicking the "new line" sign button on `Home>Paragraph` panel in MS Word)
 - delete the space which MS Word inserted after the style separator
-- type `rXXXX expression @{style}r#`, where XXXX is a numeric unique code block identification (must be unique across whole document), `expression` is R expression like `1+1`. Last part `@{style}` is optional argument specifying the MS Word style in which the expression should be evaluated (for details see help for function `renderInlineCode`).
+- type `#rXXXX expression @{style}r#`, where XXXX is a numeric unique code block identification (must be unique across whole document), `expression` is R expression like `1+1`. Last part `@{style}` is optional argument specifying the MS Word style in which the expression should be evaluated (for details see help for function `renderInlineCode`).
+- insert style separator again
+
+As a result you should see something like this:
+![Inline Code](lineWithCode.gif)
 
 As this is tedious, you can create a VBA macro for this:
 
@@ -82,7 +86,7 @@ End Sub
 Example can be seen in file `examples/templates/template1.docx`.
 
 ##### Troubleshooting the inline code
-- I am getting `R Inline code chunk ID: XXX not found. Pls reidentificate!(retype the \"#rXXXXX[space]\")` error: Because of the way how `officer` reads the document (and is looking up strings/paragraphs) the characters identifying the code chunk needs to be in a single element of the XML in which the MS Word stores the document. If this error occur, please delete everything between the beginning of the code chunk (style separator) and the expression and then type `#rXXXXX ` - where XXXX is a number specifying the code chunk; and mind the space after that. Do not change the style of any part this part of code chunk as that would split the text into separate elements in XML.
+- I am getting `R Inline code chunk ID: XXX not found. Pls reidentificate!(retype the \"#rXXXXX[space]\")` error: Because of the way how `officer` reads the document (and is looking up strings/paragraphs) the characters identifying the code chunk needs to be in a single element of the XML in which the MS Word stores the document. If this error occur, please delete everything between the beginning of the code chunk (style separator) and the expression and then type <code>#rXXXX </code> - where XXXX is a number specifying the code chunk; and mind the space after that. Do not change the style of any part this part of code chunk as that would split the text into separate elements in XML.
 - The expression does not evaluate as expected: Just try to evaluate it in the environment where you are running the `renderInlineCode` function, and make sure its output is character of length one.
 
 #### Inserting bookmarks for Plots or Tables
