@@ -13,19 +13,19 @@ vignette: >
 
 ## Motivation
 
-R language has many ways for producing state-of-the-art reports. For example `rmarkdown` or `Sweave` packages are very effective in preparing reports in PDF format. However, such techniques has some drawbacks:
+R language has many ways for producing state-of-the-art reports. For example `rmarkdown` or `Sweave` packages are very effective in preparing reports in PDF format or R2wd for creating a MS Word report from scratch. However, such techniques has some drawbacks:
 
 - For nontechnical person it is very difficult to prepare the source (template) file.
 - It is not conveniently possible to further edit the resulting report (if rendered into e.g. PDF).
-- Formatting possibilities with `rmarkdown` are limited and with `Sweave` complicated (LateX knowledge required).
+- Formatting possibilities with `rmarkdown` or `R2wd` are limited and with `Sweave` complicated (LateX knowledge required).
 
 On the other hand, `WordR` package, enables
 
 - preparation of the source file in MS Word, with all the bells and whistles it offers (and drawbacks!),
 - result is also editable MS Word document,
-- such document can be later saved as PDF in MS Word if needed.
+- such document can be later saved as PDF from MS Word if needed.
 
-To conclude, `WordR` package is useful, for example when you need to 
+To conclude, `WordR` package is useful, for example, when you need to 
 
 - periodically prepare static report and/or 
 - want non-technical people (who can use MS Word but not R) to be able to prepare majority of the template and/or

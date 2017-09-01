@@ -1,10 +1,3 @@
-library(officer)
-library(dplyr)
-
-############################## listing available styles
-paste(find.package("WordR"), "examples/templates/template1.docx", sep = "/") %>% read_docx() %>% styles_info() %>%
-  filter(style_type == "character") %>% select(style_name)
-
 ############################## rendering inline code example
 renderInlineCode(paste(examplePath(), "templates/template1.docx", sep = ""),
                  paste(examplePath(), "results/result1.docx", sep = ""))
