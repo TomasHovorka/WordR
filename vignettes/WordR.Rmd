@@ -63,7 +63,7 @@ As a result you should see something like this:
 Example can be seen in file `examples/templates/template1.docx`.
 
 #### Troubleshooting the inline code
-- How to insert corect (straight) quotes (`'` or `"`): MS Word is, by default (maybe depends on local settings), changing the quotes to 'Smart quotes'. You can change it the MS Word settings under `Proofing > AutoCorrect Options > Autoformat as you type...` You can de-select Straight Quotes as Smart Quotes and that should revert the quotes to being straight. Or when typing, right after you type a quote, if Word turns it into a "smart quote," immediately hit control-Z.
+- How to insert corect (straight) quotes (`'` or `"`): MS Word is, by default (maybe depends on local settings), changing the quotes to 'Smart quotes'. You can change it the MS Word settings under `Proofing > AutoCorrect Options > Autoformat as you type...` You can de-select Straight Quotes as Smart Quotes and that should revert the quotes to being straight. Or when typing, right after you type a quote, if Word turns it into a "smart quote," immediately press `Ctrl-Z`.
 - The expression does not evaluate as expected: Just try to evaluate it in the environment where you are running the `renderInlineCode` function, and make sure its output is character of length one.
 - The output is not in desired style: insert cursor into the inline code paragraph and select the desired style from `Styles` menu in MS Word.
 

@@ -5,15 +5,20 @@
 ## R CMD check results
 There were no ERRORs or WARNINGs. 
 
-There was 1 NOTE:
+There was 2 NOTEs:
+
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Tomas Hovorka <tomashovorka@seznam.cz>'
+
+This should be OK.
 
 
->** running examples for arch 'x64' ... [11s] NOTE  
->Examples with CPU or elapsed time > 10s   
->user system elapsed   
->addFlexTables 16.57 2.71 7.77   
+** running examples for arch 'x64' ... [15s] NOTE
+Examples with CPU or elapsed time > 10s
+               user system elapsed
+addFlexTables 18.66   3.17    9.52  
 
-Communication from previous submission:
+Communication about this NOTE from previous submission:
 
 > Hi, 
 > output from running the example on my laptop: 
