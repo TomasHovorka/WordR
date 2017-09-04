@@ -4,7 +4,7 @@
 #' \code{\link[WordR]{addFlexTables}}, \code{\link[WordR]{addPlots}} and \code{\link[WordR]{renderInlineCode}},
 #'which together should provide enough functionality to create a nice, customised MS Word report from a given template.
 #'
-#'More information about the package can be found in \href{https://cran.r-project.org/web/packages/WordR/vignettes/WordR.html}{vignette} or run:\cr
+#'More information about the package can be found in \href{https://CRAN.R-project.org/package=WordR/vignettes/WordR.html}{vignette} or run:\cr
 #'
 #' \code{vignette("WordR", package = "WordR")}
 #'

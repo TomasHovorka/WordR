@@ -10,7 +10,7 @@ FT <- list(ft_mtcars = ft_mtcars, ft_iris = ft_iris)
 addFlexTables(paste(examplePath(), "templates/templateFT.docx", sep = ""), paste(examplePath(), "results/resultFT.docx", sep = ""), FT)
 
 ############################## adding Plots example
-
+library(ggplot2)
 Plots <- list(plot1 = function() plot(hp ~ wt, data = mtcars, col = cyl), plot2 = function() print(ggplot(mtcars, aes(x = wt, y = hp, col = as.factor(cyl))) + geom_point()))
 addPlots(paste(examplePath(), "templates/templatePlots.docx", sep = ""),
          paste(examplePath(), "results/resultPlots.docx", sep = ""), Plots, height = 4)
