@@ -20,14 +20,14 @@ I wanted to be able to create the document template (including majority of the t
 
 I found out that with combination of [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs) packages and some effort, I can achieve what I need. (It could be done solely with [officer](https://CRAN.R-project.org/package=officer), but the tables and Plots creation/insertion in [ReporteRs](https://CRAN.R-project.org/package=ReporteRs) serves me better).
 
-Package [WordR](https://CRAN.R-project.org/package=WordR), in version 0.2.2, on [CRAN](https://CRAN.R-project.org), is the result.
+Package [WordR](https://CRAN.R-project.org/package=WordR), in version 0.2.2 on [CRAN](https://CRAN.R-project.org) now, is the result.
 
 ## How to use it
-This is, I hope, pretty simple. Details are described in the package [vignette](https://CRAN.R-project.org/package=WordR/vignettes/WordR.html).
+This is, I hope, pretty simple. Details are described in the package [vignette](https://CRAN.R-project.org/package=WordR/vignettes/WordR.html). Text below should provide basic understanding.
 
 ###MS Word part
-As a first step, prepare a Word document, with static text, images, headers, footers, styles etc.
-In your text, if you need, you can add a R inline code part. It needs to be separated from the rest of the text by style separator (insert style separator by pressing `Ctrl+Alt+Enter` (it is preferable to have formatting symbols visible by clicking the "new line" sign button on `Home>Paragraph` panel in MS Word)), and it should have a form of `` `r "\u0060r expression\u0060"` ``, where `expression` is R expression like `1+1`. So the result should look something like this, in the MS Word editor:  
+As a first step, prepare a Word document with static text, images, headers, footers, styles etc.
+In your text, if you need, you can add a R inline code part. It needs to be separated from the rest of the text by style separators at the beginning and the end (insert style separator by pressing `Ctrl+Alt+Enter` (it is preferable to have formatting symbols visible by clicking the "new line" sign button on `Home>Paragraph` panel in MS Word)), and it should have a form of `` `r "\u0060r expression\u0060"` ``, where `expression` is R expression like `1+1`. So the result should look something like this, in the MS Word editor:  
 
  ![](resources/lineWithCode.gif)      
   
@@ -95,7 +95,7 @@ Additionally, when the result is created, it can be further changed. For example
 
 ##Summary
 
-I believe that the [WordR](https://CRAN.R-project.org/package=WordR) package offers something new. Obviously it will never be the first choice for reproducible research, but I believe it can be useful for few corporate rats and other people who want to produce fully formatted report but do not want to go deep into LateX.
+I believe that the [WordR](https://CRAN.R-project.org/package=WordR) package offers something new. I admit that it is a just a small modification of much more powerful packages [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs), but it simplified things for me a lot. Obviously it will never be the first choice for reproducible research, but I believe it can be useful for few corporate rats and other people who want to produce fully formatted report but do not want to go deep into LateX.
 
 
 
