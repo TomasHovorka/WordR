@@ -14,7 +14,7 @@ file.remove("resources/templateMTcarsOutput.docx")
 
 One day, I was facing a challenge of a report creation. I was supposed to create a MS Word document (corporation, you know). It was supposed to be nice, and it should have been including many things MS Word offers (like headers, footers, TOC, Styles, ...).
 
-I revved up the Google machinery. I found packages like [R2wd](https://CRAN.R-project.org/package=R2wd), [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs). They are all very nice packages but for different reasons none of them covered 100% my needs, or they were doing things way too complicated.
+I revved up the Google machinery. I found packages like [R2wd](https://CRAN.R-project.org/package=R2wd), [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs). They are all very good packages but for different reasons none of them covers 100% of my needs, or they make things unnecessarily complicated (again, for my needs).
 
 I wanted to be able to create the document template (including majority of the text and styles) in MS Word. I wanted to be able to mark a place to add a table or plot and mainly, I wanted to have something like R inline code in R markdown language ([link](http://rmarkdown.rstudio.com/lesson-4.html)).
 
