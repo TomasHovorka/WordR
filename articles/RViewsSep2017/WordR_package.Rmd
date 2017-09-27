@@ -12,13 +12,13 @@ file.remove("resources/templateMTcarsOutput.docx")
 
 ## Motivation
 
-One day, I was facing a challenge of a report creation. I was supposed to create a MS Word document (corporation, you know). It was supposed to be nice, and it should have been including many things MS Word offers (like headers, footers, TOC, Styles, ...).
+One day earlier this year, I was faced with the challenge of creating a report for management. It had to be a MS Word document (corporate requirement, you know). It was supposed to be polished and use many of the standard MS Word features like headers, footers, TOC, Styles like.
 
-I revved up the Google machinery. I found packages like [R2wd](https://CRAN.R-project.org/package=R2wd), [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs). They are all very good packages but for different reasons none of them covers 100% of my needs, or they make things unnecessarily complicated (again, for my needs).
+I am not a Word guy and besides I wanted to make a reproducible document that would make it easy for me to include R Code and plots in the text. Having no idea what tools were available, I revved up the Google and found several packages including [R2wd](https://CRAN.R-project.org/package=R2wd), [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs). They are all very good packages, but for different reasons, none of them covered a hundred percent of my needs.  Also, I thought that they make some things unnecessarily complicated (again, for my needs).
 
-I wanted to be able to create the document template (including majority of the text and styles) in MS Word. I wanted to be able to mark a place to add a table or plot and mainly, I wanted to have something like R inline code in R markdown language ([link](http://rmarkdown.rstudio.com/lesson-4.html)).
+For example, I wanted to be able to create the document template that included a significant amount of text and styles. I also wanted to be able to mark a place to add a table or plot and mainly, I wanted to have something like R inline code in R markdown language ([link](http://rmarkdown.rstudio.com/lesson-4.html)).
 
-I found out that with combination of [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs) packages and some effort, I can achieve what I need. (It could be done solely with [officer](https://CRAN.R-project.org/package=officer), but the tables and Plots creation/insertion in [ReporteRs](https://CRAN.R-project.org/package=ReporteRs) serves me better).
+I found out that with combination of [officer](https://CRAN.R-project.org/package=officer) and [ReporteRs](https://CRAN.R-project.org/package=ReporteRs) packages and some effort, I can achieve what I needed. (It could be done solely with [officer](https://CRAN.R-project.org/package=officer), but the tables and plots creation/insertion in [ReporteRs](https://CRAN.R-project.org/package=ReporteRs) serves me better).
 
 Package [WordR](https://CRAN.R-project.org/package=WordR), in version 0.2.2 on [CRAN](https://CRAN.R-project.org) now, is the result.
 
@@ -39,7 +39,14 @@ At place, where you want to render a plot/image, insert bookmark named `p_XYZ` w
 Save the prepared Word template. 
 
 #### Example
-Resulting document may look like [this one](resources/templateMTcars.docx). (When you open this document in MS Word you should see something like [this](resources/templateMTcarsPrintscreen.gif), if you don't, please, refer to package [vignette](https://CRAN.R-project.org/package=WordR/vignettes/WordR.html) on how to make the bookmarks and non-printable signs visible).
+Resulting document may look like this (print screen; original document is [here](resources/templateMTcars.docx)):
+
+
+![](resources/templateMTcarsPrintscreen.gif)  
+
+<br/>
+
+If you don't see the file in the MS Word as in the print screen above, please, refer to package [vignette](https://CRAN.R-project.org/package=WordR/vignettes/WordR.html) on how to make the bookmarks and non-printable signs visible.
 
 Mind few things in the example:
 
@@ -86,7 +93,12 @@ addFlexTables("resources/templateMTcarsOutput.docx","resources/templateMTcarsOut
 addPlots("resources/templateMTcarsOutput.docx","resources/templateMTcarsOutput.docx", Plots, height = 4)
 ```
 
-This should result in the rendered file `resources/templateMTcarsOutput.docx` looking like [this](resources/templateMTcarsOutput.docx).
+This should result in the rendered file `resources/templateMTcarsOutput.docx` looking like this (prinstcreen with non-printable characters and bookmarks off; in docx format [here](resources/templateMTcarsOutput.docx)):
+
+<br/>
+![](resources/outputMTcarsPrintscreen.gif)  
+
+<br/>
 
 ##Few comments
 In my workflow, I let people, who want the report, to prepare the Word template (without the bookmarks and R code). This is better both for me (I can do other things), and for them, as they can format the report the way they want, without iterating with me. Then I take that file, put the R inline code in place, add the bookmarks, and the template is done. 
