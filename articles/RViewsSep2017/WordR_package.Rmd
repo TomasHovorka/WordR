@@ -6,7 +6,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-file.remove("resources/templateMTcarsOutput.docx")
+#file.remove("resources/templateMTcarsOutput.docx")
 
 ```
 
@@ -57,7 +57,7 @@ Mind few things in the example:
 ###R part
 
 Now, let's switch to R. Install the [WordR](https://CRAN.R-project.org/package=WordR) package (and all the dependencies; Java is required by [ReporteRs](https://CRAN.R-project.org/package=ReporteRs) package, so make sure you have it working for table and plot rendering):
-```
+```{r eval=FALSE}
 install.packages("WordR")
 ```
 
@@ -78,7 +78,7 @@ dir(path=paste0(getwd(),"/resources/"),pattern=".docx")
 ```
 
 Then the rest of the code is simple
-```{r}
+```{r eval=FALSE}
 library(WordR)
 library(ReporteRs)
 library(ggplot2)
