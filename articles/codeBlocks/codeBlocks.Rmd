@@ -9,11 +9,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Inline code with R Markdown
- R markdown is good. In this article I will focus on few tricks with R inline code ([what's that?](http://rmarkdown.rstudio.com/lesson-4.html)).
+ [R markdown](http://rmarkdown.rstudio.com/) is a well known tool for reproducible science in R. In this article I will focus on a few tricks with R [inline code](http://rmarkdown.rstudio.com/lesson-4.html).
  
- One day, I was writing a vignette for my new package [WordR](https://CRAN.R-project.org/package=WordR). I was using R markdown. At one point I wanted to show `` `r "\u0060r expression\u0060"` `` in the output, exactly as it is shown here, as an inline [code block](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#verbatim_(code)_blocks). 
+A few weeks ago, I was writing a vignette for my package [WordR](https://CRAN.R-project.org/package=WordR). I was using [R markdown](http://rmarkdown.rstudio.com/). At one point I wanted to show `` `r "\u0060r expression\u0060"` `` in the output, exactly as it is shown here, as an inline [code block](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#verbatim_(code)_blocks). 
  
- In both, R markdown and markdown, we can write <span style="color:blue">`` `abc` ``</span> to show `abc` (I will use the blue colour for code block showing code in Rmd file, whereas the black will be showing the rendered output).
+ In both, R markdown and markdown, we can write <span style="color:blue">`` `abc` ``</span> to show `abc` (I will use the blue colour for code block showing code as it appears in Rmd file, whereas the default colour will be showing the rendered output).
  What is not obvious, you can use double backticks to escape single backticks in the code block. So code like this: <span style="color:blue">``` `` `abc` `` ```</span> (mind the spaces!) produces this `` `abc` ``.
  
  Now as an exercise, you can guess how I produced the ``` `` `abc` `` ``` block above. Yes, indeed, I have <span style="color:blue">```` ``` `` `abc` `` ``` ````</span> in the Rmd source file. And we can go on like this ad infinitum (can we?).
@@ -33,7 +33,7 @@ Obviously, the R markdown renderer is trying to evaluate the `expression`. So it
 
 ##Solution
 
-Making long (and yes, I spent few hours to realise the right solution) story short. The correct code block to produce `` `r "\u0060r expression\u0060"` `` is <span style="color:blue">``` `r "\u0060\u0060 \u0060r \"\\u0060r expression\\u0060\"\u0060 \u0060\u0060"` ```</span>.
+Making long (and yes, I spent some time to realise a solution) story short. The correct code block to produce `` `r "\u0060r expression\u0060"` `` is <span style="color:blue">``` `r "\u0060\u0060 \u0060r \"\\u0060r expression\\u0060\"\u0060 \u0060\u0060"` ```</span>.
 
 Short explanation how it works: `\\u0060` is an Unicode representation of the backtick (`` ` ``). So first, the R markdown renderer finds the r expression within the double backticks and it evaluates it. Important here is the usage of the Unicode for backtick, using backtick within the expression would result in an error. (We are lucky, that the R markdown renderer is not running recursively, finding again the r code block and evaluating it again.) So once the R markdown is done, the markdown is just seeing `r "\u0060\u0060\u0060 \u0060\u0060 \u0060r expression\u0060 \u0060\u0060 \u0060\u0060\u0060" ` in the temporary `.md` file, and it evaluates it correctly to `` `r "\u0060r expression\u0060"` `` in the html output.
 
