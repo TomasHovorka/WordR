@@ -1,7 +1,7 @@
 # WordR 0.3
 * Removing dependancy on ReporteRs package (keeping it just in addFlexTables function for backward compatibility)
 * changing addPlots function (thanks D.Gohel) to use officer not ReporteRs
-* adding new function body_add_flextables which should replace addFlexTables()
+* adding new function body_add_flextables() which should replace addFlexTables()
 * adding flextable into imports
 
 # WordR 0.2.3

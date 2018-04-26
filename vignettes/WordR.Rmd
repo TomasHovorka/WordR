@@ -10,9 +10,7 @@ vignette: >
 ---
 
 
-`WordR` package enables creating MS Word files (.docx) from given MS Word template. It can evaluate inline R code, insert tables and plots. `WordR` package is technically a wrapper around powerful package `officer`.
-
-
+`WordR` package enables creating MS Word files (.docx) from given MS Word template. It can evaluate inline R code, insert tables and plots. `WordR` package is technically a wrapper around a powerful package `officer`.
 
 # Motivation
 

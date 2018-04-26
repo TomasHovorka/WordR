@@ -10,12 +10,12 @@ Encoding: UTF-8
 LazyData: true
 Imports:
   dplyr,
-  ReporteRs,
   officer,
   flextable
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,
     ggplot2,
+    ReporteRs,
     testthat
 VignetteBuilder: knitr
